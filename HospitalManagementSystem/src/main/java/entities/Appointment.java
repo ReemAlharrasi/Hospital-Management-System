@@ -59,5 +59,16 @@ public class Appointment {
         setStatus("Completed");
     }
 
+    public void reschedule(String date, String time){
+        setAppointmentTime(time);
+        setAppointmentDate(date);
+        setStatus("Active");
+    }
+
+    public boolean isPast(String date){
+        if (date.isEmpty() || getAppointmentDate().isEmpty()) return false;
+        return getAppointmentDate().compareTo(date) < 0;
+    }
+
 }
 
