@@ -40,7 +40,6 @@ public class Patient extends Person{
     public String[] getAllergies() {return allergies;}
     public int getAllergyCount() {return allergyCount;}
     public String[] getRecordIds() {return recordIds;}
-    public int getRecordCount() {return recordCount;}
     public double getOutstandingBalance() {return outstandingBalance;}
     public boolean isInsured() {return isInsured;}
 
@@ -103,5 +102,37 @@ public class Patient extends Person{
         for (int i=0;i<allergyCount;i++){
             System.out.println((i+1)+" "+ allergies[i]);
         }
+    }
+
+    public void addRecordId(String record){
+        //ensure input is not empty
+        if (record.isEmpty()){
+            System.out.println("Invalid: record cannot be empty.");
+            return;
+        }
+        //ensure list is not full
+        if (recordCount>=recordIds.length){
+            System.out.println("Invalid: record list is full.");
+            return;
+        }
+        //otherwise add record in position of recordCount
+        recordIds[recordCount]=record;
+        recordCount++;
+    }
+
+    public int getRecordCount() {return recordCount;}
+
+    public void addToBalance(double money){
+        if (money<0) {
+            System.out.println("Invalid: amount to add to balance can not be negative.");
+            return;
+        }
+        setOutstandingBalance(getOutstandingBalance()+money);
+    }
+
+    public void clearBalance(){
+        setOutstandingBalance(0);
+        System.out.println("Outstanding balance is cleared");
+        
     }
 }
