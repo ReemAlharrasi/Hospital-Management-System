@@ -78,4 +78,12 @@ public class Nurse extends Person{
         //not found
         System.out.println(patient+ " Not Found!");
     }
+
+    public int getPatientLoad(){
+        return this.patientCount;
+    }
+
+    public boolean isNightShift(){
+        return (getShift().strip().equalsIgnoreCase("night"));
+    }
 }
