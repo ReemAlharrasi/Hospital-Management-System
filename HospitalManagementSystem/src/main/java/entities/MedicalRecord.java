@@ -39,5 +39,35 @@ public class MedicalRecord {
     public String getDiagnosis() {return diagnosis;}
     public String getPrescription() {return prescription;}
     public String getNotes() {return notes;}
+
+    public void displayInfo(){
+        System.out.println("----- Medical Record -----");
+        System.out.println("Record ID: "+getRecordId());
+        System.out.println("Patient ID: "+getPatientId());
+        System.out.println("Doctor ID: "+getDoctorId());
+        System.out.println("Visit Date: "+getVisitDate());
+        System.out.println("Diagnosis: "+getDiagnosis());
+        System.out.println("Prescription: "+getPrescription());
+        System.out.println("Notes: "+getNotes());
+        System.out.println("Confidential: "+isConfidential());
+    }
+
+    public void appendNote(String note){
+        //check input is not empty
+        if (note.isEmpty()){
+            return;
+        }
+        //check if existing notes are empty;
+        if (getNotes().isEmpty()){
+            setNotes(note);
+        }else{
+            setNotes(getNotes()+" | "+note);
+        }
+    }
+
+    public void markConfidential(){
+        setConfidential(true);
+    }
+
     public boolean isConfidential() {return isConfidential;}
 }
