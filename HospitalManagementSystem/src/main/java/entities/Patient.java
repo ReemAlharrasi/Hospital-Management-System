@@ -51,7 +51,10 @@ public class Patient extends Person{
     public void setAllergyCount(int allergyCount) {this.allergyCount = allergyCount;}
     public void setRecordIds(String[] recordIds) {this.recordIds = recordIds;}
     public void setRecordCount(int recordCount) {this.recordCount = recordCount;}
-    public void setOutstandingBalance(double outstandingBalance) {this.outstandingBalance = outstandingBalance;}
+    public void setOutstandingBalance(double outstandingBalance) {
+         if (outstandingBalance>=0) this.outstandingBalance = outstandingBalance;
+         else System.out.println("Invalid: balance can not be negative.");
+    }
     public void setInsured(boolean insured) {isInsured = insured;}
 
     //methods
