@@ -27,4 +27,10 @@ public class Person {
         this.age = age;
         this.activeStatus = activeStatus;
     }
+
+    public Person(String id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
