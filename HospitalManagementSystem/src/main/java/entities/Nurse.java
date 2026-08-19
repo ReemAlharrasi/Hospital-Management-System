@@ -20,7 +20,7 @@ public class Nurse extends Person{
         //child class
         setDepartmentId(departmentId);
         setShift(shift);
-        this.assignedPatientIds = new String[50];
+        this.assignedPatientIds = new String[100];
         this.patientCount = 0;
         setYearsOfService(yearsOfService);
     }
