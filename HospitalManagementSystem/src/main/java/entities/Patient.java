@@ -133,6 +133,6 @@ public class Patient extends Person{
     public void clearBalance(){
         setOutstandingBalance(0);
         System.out.println("Outstanding balance is cleared");
-        
+
     }
 }
