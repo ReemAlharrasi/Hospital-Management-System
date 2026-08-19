@@ -38,6 +38,26 @@ public class Appointment {
     public String getReason() {return reason;}
     public boolean isFollowUp() {return isFollowUp;}
 
+    //methods
+    public void displayInfo(){
+        System.out.println("----- Medical Record -----");
+        System.out.println("Appointment ID: "+getAppointmentId());
+        System.out.println("Patient ID: "+getPatientId());
+        System.out.println("Doctor ID: "+getDoctorId());
+        System.out.println("Appointment Date: "+getAppointmentDate());
+        System.out.println("Appointment time: "+getAppointmentTime());
+        System.out.println("Status: "+getStatus());
+        System.out.println("Reason: "+getReason());
+        System.out.println("Follow up:: "+isFollowUp());
+    }
+
+    public void cancel() {
+        setStatus("Cancelled");
+    }
+
+    public void complete() {
+        setStatus("Completed");
+    }
 
 }
 
