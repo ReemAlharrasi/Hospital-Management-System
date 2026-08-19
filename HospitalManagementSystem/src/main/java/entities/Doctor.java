@@ -51,5 +51,14 @@ public class Doctor extends Person{
     public void setPatientCount(int patientCount) {this.patientCount = patientCount;}
     public void setOnCall(boolean onCall) {isOnCall = onCall;}
 
-
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("[Doctor details]");
+        System.out.println("Specialization: "+getSpecialization());
+        System.out.println("Experience years: "+getExperienceYears());
+        System.out.println("Consultation fee: "+getConsultationFee());
+        System.out.println("On Call: "+isOnCall());
+        System.out.println("Slots: "+getSlotCount()+" | Patients: "+getPatientCount());
+    }
 }
