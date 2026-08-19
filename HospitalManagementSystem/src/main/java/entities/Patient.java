@@ -54,5 +54,17 @@ public class Patient extends Person{
     public void setRecordCount(int recordCount) {this.recordCount = recordCount;}
     public void setOutstandingBalance(double outstandingBalance) {this.outstandingBalance = outstandingBalance;}
     public void setInsured(boolean insured) {isInsured = insured;}
-    
+
+    //methods
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("[Patient details]");
+        System.out.println("Blood Group: "+getBloodGroup());
+        System.out.println("Emergency contact: "+getEmergencyContact());
+        System.out.println("Registeration Date: "+getRegistrationDate());
+        System.out.println("Outstanding Balance: "+getOutstandingBalance());
+        System.out.println("Allergies : "+getAllergyCount()+", Records: "+getRecordCount());
+    }
 }
