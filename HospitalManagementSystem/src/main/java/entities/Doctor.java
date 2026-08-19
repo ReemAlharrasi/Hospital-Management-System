@@ -101,4 +101,31 @@ public class Doctor extends Person{
        }
        return false;
    }
+
+    public void assignPatient(String patient){
+        if (patient.isEmpty()){
+            System.out.println("Invalid:  patient ID can not be empty.");
+            return;
+        }
+        //check if list is full
+        if (patientCount>=assignedPatientIds.length){
+            System.out.println("Invalid: list is full.");
+            return;
+        }
+        //add to list
+        assignedPatientIds[patientCount]=patient;
+        patientCount++;
+    }
+    public int getPatientLoad(){
+        return this.patientCount;
+    }
+
+    public void raiseFee(double money){
+        if (money<0){
+            System.out.println("Invalid:  money can not be negative.");
+            return;
+        }
+        //update fee
+        setConsultationFee(getConsultationFee()+money);
+    }
 }
