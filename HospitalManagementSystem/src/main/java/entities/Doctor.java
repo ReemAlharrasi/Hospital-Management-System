@@ -61,4 +61,36 @@ public class Doctor extends Person{
         System.out.println("On Call: "+isOnCall());
         System.out.println("Slots: "+getSlotCount()+" | Patients: "+getPatientCount());
     }
+
+    public void addSlot(String slot){
+        //ensure input is not empty
+        if (slot.isEmpty()){
+            System.out.println("Invalid: slot can not be empty.");
+            return;
+        }
+
+        //check if list is full
+        if (slotCount >= timeSlots.length) {
+            System.out.println("Invalid: slot time list is full.");
+            return;
+        }
+        //add to list
+        timeSlots[slotCount] = slot;
+        slotCount++;
+    }
+
+    public void removeSlot(String slot){
+        for (int i=0; i<slotCount;i++){
+            if (slot.equalsIgnoreCase(timeSlots[i])){
+                //found
+                for (int j=i;j<slotCount;j++){
+                    timeSlots[j]=timeSlots[j+1];//shift everything to the left
+                }
+                return;
+            }
+        }
+        //not found
+        System.out.println(slot+ " Not Found!");
+    }
+
 }
