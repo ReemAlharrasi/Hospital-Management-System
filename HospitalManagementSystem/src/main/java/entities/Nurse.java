@@ -28,9 +28,10 @@ public class Nurse extends Person{
     //setters
     public void setDepartmentId(String departmentId) {this.departmentId = departmentId;}
     public void setShift(String shift) {this.shift = shift;}
-    public void setAssignedPatientIds(String[] assignedPatientIds) {this.assignedPatientIds = assignedPatientIds;}
-    public void setPatientCount(Integer patientCount) {this.patientCount = patientCount;}
-    public void setYearsOfService(Integer yearsOfService) {this.yearsOfService = yearsOfService;}
+    public void setYearsOfService(Integer yearsOfService) {
+        if (yearsOfService>=0)this.yearsOfService = yearsOfService;
+        else System.out.println("Invalid: years of service can not be negative.");
+    }
 
     //getters
     public String getDepartmentId() {return departmentId;}

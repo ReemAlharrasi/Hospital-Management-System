@@ -19,23 +19,23 @@ public class Person {
     //constructors
     public Person(String id, String firstName, String lastName, String dateOfBirth, String gender,
               String phoneNumber, String email, String address, String nationalId, int age, boolean activeStatus) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.nationalId = nationalId;
-        this.age = age;
-        this.activeStatus = activeStatus;
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setDateOfBirth(dateOfBirth);
+        setGender(gender);
+        setPhoneNumber(phoneNumber);
+        setEmail(email);
+        setAddress(address);
+        setNationalId(nationalId);
+        setAge(age);
+        setActiveStatus(activeStatus);
     }
 
     public Person(String id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
     }
 
     //getters
@@ -61,7 +61,10 @@ public class Person {
     public void setEmail(String email) {this.email = email;}
     public void setAddress(String address) {this.address = address;}
     public void setNationalId(String nationalId) {this.nationalId = nationalId;}
-    public void setAge(int age) {this.age = age;}
+    public void setAge(int age) {
+        if (age>=0 && age<=120) this.age = age;
+        else System.out.println("Invalid: age out of range.");
+    }
     public void setActiveStatus(boolean activeStatus) {this.activeStatus = activeStatus;}
 
     //methods

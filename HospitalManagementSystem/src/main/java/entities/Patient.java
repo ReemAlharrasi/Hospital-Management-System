@@ -22,15 +22,15 @@ public class Patient extends Person{
         super(id, firstName, lastName, dateOfBirth, gender, phoneNumber, email, address, nationalId, age, activeStatus);
 
         //patient part (child class)
-        this.bloodGroup=bloodGroup;
-        this.emergencyContact=emergencyContact;
-        this.registrationDate=registrationDate;
+        setBloodGroup(bloodGroup);
+        setEmergencyContact(emergencyContact);
+        setRegistrationDate(registrationDate);
         this.allergies= new String[50];
         this.allergyCount=0;
         this.recordIds=new String[50];
         this.recordCount=0;
-        this.outstandingBalance=outstandingBalance;
-        this.isInsured=isInsured;
+        setOutstandingBalance(outstandingBalance);
+        setInsured(isInsured);
     }
 
     //getters

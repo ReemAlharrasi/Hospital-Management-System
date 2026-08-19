@@ -43,15 +43,14 @@ public class Doctor extends Person{
 
     //setters
     public void setSpecialization(String specialization) {this.specialization = specialization;}
-    public void setExperienceYears(Integer experienceYears) {this.experienceYears = experienceYears;}
+    public void setExperienceYears(Integer experienceYears) {
+        if (experienceYears>=0)this.experienceYears = experienceYears;
+        else System.out.println("Invalid: experience years can not be negative.");
+    }
     public void setConsultationFee(Double consultationFee) {
         if (consultationFee>=0)this.consultationFee = consultationFee;
         else System.out.println("Invalid: Fee can not be negative.");
     }
-    public void setTimeSlots(String[] timeSlots) {this.timeSlots = timeSlots;}
-    public void setSlotCount(int slotCount) {this.slotCount = slotCount;}
-    public void setAssignedPatientIds(String[] assignedPatientIds) {this.assignedPatientIds = assignedPatientIds;}
-    public void setPatientCount(int patientCount) {this.patientCount = patientCount;}
     public void setOnCall(boolean onCall) {isOnCall = onCall;}
 
     @Override
