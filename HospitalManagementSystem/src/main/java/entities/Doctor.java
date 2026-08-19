@@ -93,4 +93,12 @@ public class Doctor extends Person{
         System.out.println(slot+ " Not Found!");
     }
 
+   public boolean hasSlot(String slot){
+       for (int i = 0; i < slotCount; i++) {
+           if (timeSlots[i].equalsIgnoreCase(slot)) {
+               return true;
+           }
+       }
+       return false;
+   }
 }
