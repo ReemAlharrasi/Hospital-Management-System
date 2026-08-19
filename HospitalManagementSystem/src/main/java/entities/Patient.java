@@ -4,10 +4,10 @@ public class Patient extends Person{
     private String bloodGroup,emergencyContact,registrationDate;
 
     private String[] allergies;
-    private int allergyCount;
+    private Integer allergyCount;
 
     private String[] recordIds;
-    private int recordCount;
+    private Integer recordCount;
 
     private double outstandingBalance;
     private boolean isInsured;
@@ -56,7 +56,6 @@ public class Patient extends Person{
     public void setInsured(boolean insured) {isInsured = insured;}
 
     //methods
-
     @Override
     public void displayInfo() {
         super.displayInfo();
@@ -66,5 +65,43 @@ public class Patient extends Person{
         System.out.println("Registeration Date: "+getRegistrationDate());
         System.out.println("Outstanding Balance: "+getOutstandingBalance());
         System.out.println("Allergies : "+getAllergyCount()+", Records: "+getRecordCount());
+    }
+
+    public void addAllergy(String allergy){
+        //ensure input is not empty
+        if (allergy.isEmpty()){
+            System.out.println("Invalid: Allergy cannot be empty.");
+            return;
+        }
+        //ensure list is not full
+        if (allergyCount>=allergies.length){
+            System.out.println("Invalid: Allergy list is full.");
+            return;
+        }
+        //otherwise add allergy in position of allergyCount
+        allergies[allergyCount]=allergy;
+        allergyCount++;
+    }
+
+    public boolean hasAllergy(String allergy){
+        for (int i=0;i<allergyCount;i++){
+            if(allergy.equalsIgnoreCase(allergies[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void listAllergies(){
+        System.out.println("Allergies list of patient ["+getFullName()+"]");
+        //if list is empty
+        if (allergyCount.equals(0)){
+            System.out.println("none");
+            return;
+        }
+        //otherwise print the list
+        for (int i=0;i<allergyCount;i++){
+            System.out.println((i+1)+" "+ allergies[i]);
+        }
     }
 }
