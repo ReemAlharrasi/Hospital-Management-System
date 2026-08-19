@@ -52,18 +52,46 @@ public class Person {
     public boolean isActiveStatus() {return activeStatus;}
 
     //setters
-    public void setId(String id) {this.id = id;}
-    public void setFirstName(String firstName) {this.firstName = firstName;}
-    public void setLastName(String lastName) {this.lastName = lastName;}
-    public void setDateOfBirth(String dateOfBirth) {this.dateOfBirth = dateOfBirth;}
-    public void setGender(String gender) {this.gender = gender;}
-    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
-    public void setEmail(String email) {this.email = email;}
-    public void setAddress(String address) {this.address = address;}
-    public void setNationalId(String nationalId) {this.nationalId = nationalId;}
+    public void setId(String id) {
+        if(id != null && !id.isEmpty()) this.id = id;
+        else System.out.println("Id can not be empty");
+    }
+    public void setFirstName(String firstName) {
+        if (firstName != null && !firstName.isEmpty()) this.firstName = firstName;
+        else System.out.println("First name can not be empty");
+    }
+    public void setLastName(String lastName) {
+        if (lastName != null && !lastName.isEmpty()) this.lastName = lastName;
+        else System.out.println("Last name can not be empty");
+    }
+    public void setDateOfBirth(String dateOfBirth) {
+        if (dateOfBirth != null && !dateOfBirth.isEmpty()) this.dateOfBirth = dateOfBirth;
+        else System.out.println("Date of birth can not be empty");
+    }
+    public void setGender(String gender) {
+        if (gender != null && !gender.isEmpty()) this.gender = gender;
+        else System.out.println("Gender can not be empty");
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber != null && !phoneNumber.isEmpty()) this.phoneNumber = phoneNumber;
+        else System.out.println("Phone Number can not be empty");
+    }
+    public void setEmail(String email) {
+        if (email != null && !email.isEmpty()) this.email = email;
+        else System.out.println("Phone Number can not be empty");
+    }
+    public void setAddress(String address) {
+        if (address != null && !address.isEmpty()) this.address = address;
+        else System.out.println("Address can not be empty");
+    }
+    public void setNationalId(String nationalId) {
+        if (nationalId != null && !nationalId.isEmpty()) this.nationalId = nationalId;
+        else System.out.println("National ID can not be empty");
+    }
     public void setAge(int age) {
         if (age>=0 && age<=120) this.age = age;
-        else System.out.println("Invalid: age out of range.");
+        else System.out.println("Invalid: age out of          b n" +
+                "3range.");
     }
     public void setActiveStatus(boolean activeStatus) {this.activeStatus = activeStatus;}
 

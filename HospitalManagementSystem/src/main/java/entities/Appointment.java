@@ -5,6 +5,9 @@ public class Appointment {
     private String appointmentDate, appointmentTime, status, reason;
     private boolean isFollowUp;
 
+
+    private static final String[] ALLOWED_STATUS = { "Active", "Completed", "Cancelled" };
+
     //constructor
     public Appointment(String appointmentId, String patientId, String doctorId, String appointmentDate,
                        String appointmentTime, String status, String reason, boolean isFollowUp) {
@@ -19,13 +22,41 @@ public class Appointment {
     }
 
     //setters
-    public void setAppointmentId(String appointmentId) {this.appointmentId = appointmentId;}
-    public void setPatientId(String patientId) {this.patientId = patientId;}
-    public void setDoctorId(String doctorId) {this.doctorId = doctorId;}
-    public void setAppointmentDate(String appointmentDate) {this.appointmentDate = appointmentDate;}
-    public void setAppointmentTime(String appointmentTime) {this.appointmentTime = appointmentTime;}
-    public void setStatus(String status) {this.status = status;}
-    public void setReason(String reason) {this.reason = reason;}
+    public void setAppointmentId(String appointmentId) {
+        if (appointmentId != null && !appointmentId.isEmpty()) this.appointmentId = appointmentId;
+        else System.out.println("appointment Id can not be empty");
+    }
+    public void setPatientId(String patientId) {
+        if (patientId != null && !patientId.isEmpty()) this.patientId = patientId;
+        else System.out.println("patient Id can not be empty");
+    }
+    public void setDoctorId(String doctorId) {
+        if (doctorId != null && !doctorId.isEmpty()) this.doctorId = doctorId;
+        else System.out.println("doctor Id can not be empty");
+    }
+    public void setAppointmentDate(String appointmentDate) {
+        if (appointmentDate != null && !appointmentDate.isEmpty()) this.appointmentDate = appointmentDate;
+        else System.out.println("appointment Date can not be empty");
+    }
+    public void setAppointmentTime(String appointmentTime) {
+        if (appointmentTime != null && !appointmentTime.isEmpty()) this.appointmentTime = appointmentTime;
+        else System.out.println("appointment Time can not be empty");
+    }
+    public void setStatus(String status) {
+        if (status != null && !status.isEmpty()) {
+            for (String allowed : ALLOWED_STATUS) {
+                if (allowed.equalsIgnoreCase(status.trim())) {
+                    this.status = status;
+                    return;
+                }
+            }
+            System.out.println("status entered is not allowed");
+        } else System.out.println("status  can not be empty");
+    }
+    public void setReason(String reason) {
+        if (reason != null && !reason.isEmpty()) this.reason = reason;
+        else System.out.println("reason can not be empty");
+    }
     public void setFollowUp(boolean followUp) {isFollowUp = followUp;}
 
     //getters

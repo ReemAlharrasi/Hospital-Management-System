@@ -44,13 +44,18 @@ public class Patient extends Person{
     public boolean isInsured() {return isInsured;}
 
     //setters
-    public void setBloodGroup(String bloodGroup) {this.bloodGroup = bloodGroup;}
-    public void setEmergencyContact(String emergencyContact) {this.emergencyContact = emergencyContact;}
-    public void setRegistrationDate(String registrationDate) {this.registrationDate = registrationDate;}
-    public void setAllergies(String[] allergies) {this.allergies = allergies;}
-    public void setAllergyCount(int allergyCount) {this.allergyCount = allergyCount;}
-    public void setRecordIds(String[] recordIds) {this.recordIds = recordIds;}
-    public void setRecordCount(int recordCount) {this.recordCount = recordCount;}
+    public void setBloodGroup(String bloodGroup) {
+        if (bloodGroup != null && !bloodGroup.isEmpty()) this.bloodGroup = bloodGroup;
+        else System.out.println("Blood Group can not be empty");
+    }
+    public void setEmergencyContact(String emergencyContact) {
+        if (emergencyContact != null && !emergencyContact.isEmpty()) this.emergencyContact = emergencyContact;
+        else System.out.println("emergency Contact can not be empty");
+    }
+    public void setRegistrationDate(String registrationDate) {
+        if (registrationDate != null && !registrationDate.isEmpty()) this.registrationDate = registrationDate;
+        else System.out.println("registration Date can not be empty");
+    }
     public void setOutstandingBalance(double outstandingBalance) {
          if (outstandingBalance>=0) this.outstandingBalance = outstandingBalance;
          else System.out.println("Invalid: balance can not be negative.");

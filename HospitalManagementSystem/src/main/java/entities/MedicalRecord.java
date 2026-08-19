@@ -22,13 +22,34 @@ public class MedicalRecord {
     }
 
     //setters
-    public void setRecordId(String recordId) {this.recordId = recordId;}
-    public void setPatientId(String patientId) {this.patientId = patientId;}
-    public void setDoctorId(String doctorId) {this.doctorId = doctorId;}
-    public void setVisitDate(String visitDate) {this.visitDate = visitDate;}
-    public void setDiagnosis(String diagnosis) {this.diagnosis = diagnosis;}
-    public void setPrescription(String prescription) {this.prescription = prescription;}
-    public void setNotes(String notes) {this.notes = notes;}
+    public void setRecordId(String recordId) {
+        if (recordId != null && !recordId.isEmpty()) this.recordId = recordId;
+        else System.out.println("record Id can not be empty");
+    }
+    public void setPatientId(String patientId) {
+        if (patientId != null && !patientId.isEmpty()) this.patientId = patientId;
+        else System.out.println("patient Id can not be empty");
+    }
+    public void setDoctorId(String doctorId) {
+        if (doctorId != null && !doctorId.isEmpty()) this.doctorId = doctorId;
+        else System.out.println("doctor Id can not be empty");
+    }
+    public void setVisitDate(String visitDate) {
+        if (visitDate != null && !visitDate.isEmpty()) this.visitDate = visitDate;
+        else System.out.println("visit Date can not be empty");
+    }
+    public void setDiagnosis(String diagnosis) {
+        if (diagnosis != null && !diagnosis.isEmpty()) this.diagnosis = diagnosis;
+        else System.out.println("diagnosis can not be empty");
+    }
+    public void setPrescription(String prescription) {
+        if (prescription != null && !prescription.isEmpty()) this.prescription = prescription;
+        else System.out.println("prescription can not be empty");
+    }
+    public void setNotes(String notes) {
+        if (notes != null && !notes.isEmpty()) this.notes = notes;
+        else System.out.println("notes can not be empty");
+    }
     public void setConfidential(boolean confidential) {isConfidential = confidential;}
 
     //getters

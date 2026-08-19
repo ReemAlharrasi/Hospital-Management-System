@@ -42,7 +42,10 @@ public class Doctor extends Person{
     public boolean isOnCall() {return isOnCall;}
 
     //setters
-    public void setSpecialization(String specialization) {this.specialization = specialization;}
+    public void setSpecialization(String specialization) {
+        if (specialization != null && !specialization.isEmpty()) this.specialization = specialization;
+        else System.out.println("specialization can not be empty");
+    }
     public void setExperienceYears(Integer experienceYears) {
         if (experienceYears>=0)this.experienceYears = experienceYears;
         else System.out.println("Invalid: experience years can not be negative.");

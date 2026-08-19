@@ -9,6 +9,8 @@ public class Nurse extends Person{
 
     private Integer yearsOfService;
 
+    private static final String[] ALLOWED_SHIFT = { "morning", "evening", "night" };
+
 
     public Nurse(String id, String firstName, String lastName, String dateOfBirth,
                  String gender, String phoneNumber, String email, String address,
@@ -26,8 +28,21 @@ public class Nurse extends Person{
     }
 
     //setters
-    public void setDepartmentId(String departmentId) {this.departmentId = departmentId;}
-    public void setShift(String shift) {this.shift = shift;}
+    public void setDepartmentId(String departmentId) {
+        if (departmentId != null && !departmentId.isEmpty()) this.departmentId = departmentId;
+        else System.out.println("Address can not be empty");
+    }
+    public void setShift(String shift) {
+        if (shift != null && !shift.isEmpty()) {
+            for (String allowed : ALLOWED_SHIFT) {
+                if (allowed.equalsIgnoreCase(shift.trim())) {
+                    this.shift = shift;
+                    return;
+                }
+            }
+            System.out.println("shift entered is   m  not allowed");
+        } else System.out.println("shift can not be empty");
+    }
     public void setYearsOfService(Integer yearsOfService) {
         if (yearsOfService>=0)this.yearsOfService = yearsOfService;
         else System.out.println("Invalid: years of service can not be negative.");
