@@ -6,10 +6,10 @@ public class Doctor extends Person{
     private Double consultationFee;
 
     private String[] timeSlots;
-    private int slotCount;
+    private Integer slotCount;
 
     private String[] assignedPatientIds;
-    private int patientCount;
+    private Integer patientCount;
 
     private boolean isOnCall;
 
