@@ -39,4 +39,43 @@ public class Nurse extends Person{
     public Integer getPatientCount() {return patientCount;}
     public Integer getYearsOfService() {return yearsOfService;}
 
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("[Nurse details]");
+        System.out.println("Department Id: "+getDepartmentId());
+        System.out.println("Shift: "+getShift());
+        System.out.println("Years of service: "+getYearsOfService());
+        System.out.println("Patients: "+getPatientCount());
+    }
+
+    public void assignPatient(String patient){
+        if (patient.isEmpty()){
+            System.out.println("Invalid:  patient ID can not be empty.");
+            return;
+        }
+        //check if list is full
+        if (patientCount>=assignedPatientIds.length){
+            System.out.println("Invalid: list is full.");
+            return;
+        }
+        //add to list
+        assignedPatientIds[patientCount]=patient;
+        patientCount++;
+    }
+
+    public void unassignPatient(String patient){
+        for (int i=0; i<patientCount;i++){
+            if (patient.equalsIgnoreCase(assignedPatientIds[i])){
+                //found
+                for (int j=i;j<patientCount;j++){
+                    assignedPatientIds[j]=assignedPatientIds[j+1];//shift everything to the left
+                }
+                return;
+            }
+        }
+        //not found
+        System.out.println(patient+ " Not Found!");
+    }
 }
