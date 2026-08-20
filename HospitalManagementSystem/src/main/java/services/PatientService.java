@@ -125,10 +125,10 @@ public class PatientService implements Manageable, Searchable {
     }
 
     public void listInPatients() {
-        System.out.println("Patients -----");
+        System.out.println("In Patients -----");
         boolean flag = false;
         for (int i = 0; i < count; i++) {
-            if (patients[i] != null) {
+            if (patients[i] != null && patients[i] instanceof InPatient) {
                 patients[i].displaySummary();
                 flag = true;
             }
