@@ -1,6 +1,8 @@
 package entities;
 
-public class Surgeon extends Doctor{
+import interfaces.Displayable;
+
+public class Surgeon extends Doctor implements Displayable {
     //attributes
     private Integer surgeriesPerformed;
     private boolean operationTheatreAccess;

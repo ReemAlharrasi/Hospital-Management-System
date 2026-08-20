@@ -1,6 +1,8 @@
 package entities;
 
-public class Appointment {
+import interfaces.Displayable;
+
+public class Appointment implements Displayable {
     private String appointmentId, patientId, doctorId;
     private String appointmentDate, appointmentTime, status, reason;
     private boolean isFollowUp;
@@ -80,6 +82,11 @@ public class Appointment {
         System.out.println("Status: "+getStatus());
         System.out.println("Reason: "+getReason());
         System.out.println("Follow up:: "+isFollowUp());
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("[Appointment] id: " +getAppointmentDate()+ " - Patient ID: " + getPatientId()+ " - Doctor ID: " + getDoctorId());
     }
 
     public void cancel() {

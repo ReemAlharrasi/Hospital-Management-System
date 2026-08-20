@@ -1,6 +1,8 @@
 package entities;
 
-public class MedicalRecord {
+import interfaces.Displayable;
+
+public class MedicalRecord implements Displayable {
     //attributes
     private String recordId, patientId, doctorId;
     private String visitDate, diagnosis, prescription, notes;
@@ -71,6 +73,12 @@ public class MedicalRecord {
         System.out.println("Prescription: "+getPrescription());
         System.out.println("Notes: "+getNotes());
         System.out.println("Confidential: "+isConfidential());
+    }
+
+    @Override
+    public void displaySummary() {
+        System.out.println("[Medical record] id: " +getRecordId()+ " - Patient ID: " + getPatientId()+ " - Doctor ID: " + getDoctorId());
+
     }
 
     public void appendNote(String note){

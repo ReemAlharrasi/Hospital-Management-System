@@ -1,8 +1,10 @@
 package entities;
 
+import interfaces.Displayable;
+
 import java.util.Objects;
 
-public class Person {
+public class Person implements Displayable {
     //attributes
     private String id;
     private String firstName;

@@ -1,6 +1,8 @@
 package entities;
 
-public class Patient extends Person{
+import interfaces.Displayable;
+
+public class Patient extends Person implements Displayable {
     private String bloodGroup,emergencyContact,registrationDate;
 
     private String[] allergies;

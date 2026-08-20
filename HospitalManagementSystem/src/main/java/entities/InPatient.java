@@ -1,6 +1,8 @@
 package entities;
 
-public class InPatient extends Patient { //Person → Patient → InPatient
+import interfaces.Displayable;
+
+public class InPatient extends Patient implements Displayable { //Person → Patient → InPatient
     private String admissionDate, roomNumber,admissionState;
     private double dailyCharges;
     private Integer daysAdmitted;

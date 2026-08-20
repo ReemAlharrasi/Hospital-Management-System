@@ -1,6 +1,8 @@
 package entities;
 
-public class Nurse extends Person{
+import interfaces.Displayable;
+
+public class Nurse extends Person implements Displayable {
     private String departmentId;
     private String shift;
 

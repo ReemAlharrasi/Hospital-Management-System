@@ -1,6 +1,8 @@
 package entities;
 
-public class Doctor extends Person{
+import interfaces.Displayable;
+
+public class Doctor extends Person  implements Displayable {
     private String specialization;
     private Integer experienceYears;
     private Double consultationFee;
