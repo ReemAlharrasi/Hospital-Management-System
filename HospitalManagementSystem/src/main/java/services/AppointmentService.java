@@ -111,4 +111,62 @@ public Appointment(String appointmentId, String patientId, String doctorId, Stri
     private Appointment getAppointment(int i) {
         return appointments[i];
     }
+
+    public void cancel(String appointmentId) {
+        Object found = searchById(appointmentId);
+        if (found == null) {
+            System.out.println("No Appointment with id " + appointmentId);
+            return ;
+        }
+        Appointment a = (Appointment) found;
+        a.cancel();
+    }
+
+    public void complete(String appointmentId) {
+        Object found = searchById(appointmentId);
+        if (found == null) {
+            System.out.println("No Appointment with id " + appointmentId);
+            return ;
+        }
+        Appointment a = (Appointment) found;
+        a.complete();
+    }
+
+    public void reschedule(String appointmentId, String date,String time) {
+        Object found = searchById(appointmentId);
+        if (found == null) {
+            System.out.println("No Appointment with id " + appointmentId);
+            return ;
+        }
+        Appointment a = (Appointment) found;
+        schedule(a.getPatientId(),a.getDoctorId(),date,time);
+    }
+
+    public void listByStatus(String status){
+        System.out.println("--- Appointments of " + status + " ---");
+        boolean flag = false;
+        for (int i = 0; i < count; i++) {
+            if (appointments[i].getStatus().equalsIgnoreCase(status)) {
+                appointments[i].displaySummary();
+                flag = true;
+            }
+        }
+        if (!flag) {
+            System.out.println("(none)");
+        }
+    }
+
+    public void listByPatient(String patientId){
+        System.out.println("--- Appointments of " + patientId + " ---");
+        boolean flag = false;
+        for (int i = 0; i < count; i++) {
+            if (appointments[i].getStatus().equalsIgnoreCase(patientId)) {
+                appointments[i].displaySummary();
+                flag = true;
+            }
+        }
+        if (!flag) {
+            System.out.println("(none)");
+        }
+    }
 }
