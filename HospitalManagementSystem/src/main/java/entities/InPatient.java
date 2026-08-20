@@ -42,6 +42,10 @@ public class InPatient extends Patient {
     }
 
     //getters
+    public String getAdmissionDate() {return admissionDate;}
+    public String getRoomNumber() {return roomNumber;}
+    public double getDailyCharges() {return dailyCharges;}
+    public Integer getDaysAdmitted() {return daysAdmitted;}
 
     @Override
     public void displayInfo() {
