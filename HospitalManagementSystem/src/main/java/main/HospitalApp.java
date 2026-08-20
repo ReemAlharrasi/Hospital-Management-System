@@ -8,6 +8,7 @@ public class HospitalApp {
     private int count;
 
     void main(){
+        //people[count++] means add person at position count, then increment count by 1
         people[count++]=new Person(HelperUtils.generateId("P"),"Person","1");
         people[count++]= new Patient(HelperUtils.generateId("PA"), "patient", "1", "1998-07-20", "Female", "91234567", "unknown", "Muscat", "123456789", 28, true, "A+", "92345678", "2026-08-20", 75.50, true);
         people[count++]=new Doctor(HelperUtils.generateId("DR"),"Doctor","1","2000-01-01","Female","9093 9430","Dr@hospital.om","Ghala","12321",26,true,"Kids",5,234.5,true);
