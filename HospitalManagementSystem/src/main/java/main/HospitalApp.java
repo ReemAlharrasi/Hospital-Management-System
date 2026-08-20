@@ -49,4 +49,17 @@ public class HospitalApp {
         System.out.println("nurses: "+nurses);
     }
 
+    public Person findOldest(){
+        if (count == 0) {
+            return null;
+        }
+        Person oldest = people[0];
+        for (int i = 1; i < count; i++) {
+            if (people[i].getAge() > oldest.getAge()) {
+                oldest = people[i];
+            }
+        }
+        return oldest;
+    }
+
 }
