@@ -30,6 +30,18 @@ public class DoctorService implements Manageable, Searchable {
 
     @Override
     public boolean removeById(String id) {
+        for (int i = 0; i < count; i++) {
+            if (doctors[i].getId().equalsIgnoreCase(id)) {
+                //remove item by shifting
+                for (int j = i; j < count - 1; j++) {
+                    doctors[j] = doctors[j + 1];
+                }
+                //delete last value(duplicate) and decrement count
+                doctors[count - 1] = null;
+                count = count - 1;
+                return true;
+            }
+        }
         return false;
     }
 
