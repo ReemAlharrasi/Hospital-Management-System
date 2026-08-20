@@ -2,9 +2,11 @@ package services;
 
 import entities.Patient;
 import entities.InPatient;
+import interfaces.Manageable;
+import interfaces.Searchable;
 import utils.HelperUtils;
 
-public class PatientService {
+public class PatientService implements Manageable, Searchable {
     private Patient[] patients;
     private int count;
 
@@ -27,12 +29,7 @@ public class PatientService {
                 "unknown","unknown", age, true,
                 "unknown","not givin",
                 "2026-08-20",0,false);
-        if (count>=patients.length){
-            System.out.println("List is full");
-        }else{
-            patients[count]=p;
-            count++;
-        }
+        add(p);
         return p;
 
     }
@@ -44,12 +41,76 @@ public class PatientService {
     }
     public Patient addPatient(Patient p){
         p.setId(HelperUtils.generateId("PA"));
+        add(p);
+        return p;
+    }
+
+    @Override
+    public void add(Object item) {
+        if (item == null || !(item instanceof Patient)) {
+            System.out.println("Rejected: not a student.");
+            return;
+        }
         if (count>=patients.length){
             System.out.println("List is full");
         }else{
-            patients[count]=p;
+            patients[count]= (Patient) item;
             count++;
         }
-        return p;
+
+    }
+
+    @Override
+    public boolean removeById(String id) {
+        for (int i = 0; i < count; i++) {
+            if (patients[i].getId().equalsIgnoreCase(id)) {
+                //remove item by shifting
+                for (int j = i; j < count - 1; j++) {
+                    patients[j] = patients[j + 1];
+                }
+                //delete last value(duplicate) and decrement count
+                patients[count - 1] = null;
+                count = count - 1;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Object[] getAll() {
+        Object[] result = new Object[count]; //create list with actual size
+        for (int i = 0; i < count; i++) {
+            result[i] = patients[i]; //copy each item
+        }
+        return result; //return copied list
+    }
+
+    @Override
+    public Object[] search(String keyword) {
+        int repeat = 0;
+        for (int i = 0; i < count; i++) {
+            if (patients[i].getId().equalsIgnoreCase(keyword)) {
+                repeat++; //count how many times id got repeated
+            }
+        }
+        Object[] result = new Object[repeat]; //create list to copy items
+        int pos = 0; //for position
+        for (int i = 0; i < count; i++) {
+            if (patients[i].getId().equalsIgnoreCase(keyword)) {
+                result[pos++]=patients[i]; //copy matching item
+            }
+        }
+        return result; //return list
+    }
+
+    @Override
+    public Object searchById(String id) {
+        for (int i = 0; i < count; i++) {
+            if (patients[i].getId().equalsIgnoreCase(id)) {
+                return patients[i];
+            }
+        }
+        return null;
     }
 }
