@@ -133,4 +133,13 @@ public class Doctor extends Person{
         //update fee
         setConsultationFee(getConsultationFee()+money);
     }
+
+    public void updateFee(double fee){
+        setConsultationFee(fee);
+    }
+
+    public void updateFee(double fee,String reason){
+        setConsultationFee(fee);
+        System.out.println(getFullName()+"'s Fee updates. reason: "+reason);
+    }
 }

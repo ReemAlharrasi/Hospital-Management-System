@@ -101,5 +101,6 @@ public class Appointment {
         return getAppointmentDate().compareTo(date) < 0;
     }
 
+
 }
 

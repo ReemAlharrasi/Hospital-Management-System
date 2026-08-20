@@ -143,4 +143,13 @@ public class Patient extends Person{
         System.out.println("Outstanding balance is cleared");
 
     }
+
+    public void updateContact(String phone){
+        setPhoneNumber(phone);
+    }
+
+    public void updateContact(String phone,String email){
+        setPhoneNumber(phone);
+        setEmail(email);
+    }
 }
