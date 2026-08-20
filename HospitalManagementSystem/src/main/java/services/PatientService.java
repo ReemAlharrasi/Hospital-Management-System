@@ -113,4 +113,36 @@ public class PatientService implements Manageable, Searchable {
         }
         return null;
     }
+
+    public void updateContact(String id, String phone, String email) {
+        Object found = searchById(id);
+        if (found == null) {
+            System.out.println("No Patient with id " + id);
+            return;
+        }
+        Patient p = (Patient) found;
+        p.updateContact(phone, email);
+    }
+
+    public void listInPatients() {
+        System.out.println("Patients -----");
+        boolean flag = false;
+        for (int i = 0; i < count; i++) {
+            if (patients[i] != null) {
+                patients[i].displaySummary();
+                flag = true;
+            }
+        }
+        if (!flag) {
+            System.out.println("(none)");
+        }
+    }
+
+    public double totalOutstanding() {
+        double total = 0;
+        for (int i = 0; i < count; i++) {
+            total = total + patients[i].getOutstandingBalance();
+        }
+        return total;
+    }
 }
