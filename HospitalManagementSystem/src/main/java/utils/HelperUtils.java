@@ -49,4 +49,27 @@ public class HelperUtils {
         return value >= min && value <= max;
     }
 
+    //age
+    public static boolean isValidAge(int age) {
+        return inRange(age, 0, 120);
+    }
+
+    //phone number
+    public static boolean isValidPhone(String phone) {
+        if (isEmpty(phone)) return false;
+        return inRange(phone.trim().length(),6,8);
+    }
+
+    // if list[] contains
+    public static boolean isOneOf(String input, String[] allowed) {
+        if (input == null || allowed == null) return false;
+
+        for (int i = 0; i < allowed.length; i++) {
+            if (allowed[i] != null && allowed[i].equalsIgnoreCase(input.trim())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
