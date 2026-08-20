@@ -1,7 +1,7 @@
 package entities;
 
-public class InPatient extends Patient {
-    private String admissionDate, roomNumber;
+public class InPatient extends Patient { //Person → Patient → InPatient
+    private String admissionDate, roomNumber,admissionState;
     private double dailyCharges;
     private Integer daysAdmitted;
 
@@ -32,13 +32,24 @@ public class InPatient extends Patient {
 
     public void setDailyCharges(double dailyCharges) {
         if (dailyCharges>=0) this.dailyCharges = dailyCharges;
-        else System.out.println("dailyCharges can not be negative");
+        else {
+            this.dailyCharges =0;
+            System.out.println("dailyCharges can not be negative");
+        }
 
     }
 
     public void setDaysAdmitted(Integer daysAdmitted) {
         if (daysAdmitted>=0) this.daysAdmitted = daysAdmitted;
-        else System.out.println("days Admitted can not be negative");
+        else {
+            this.daysAdmitted =0;
+            System.out.println("days Admitted can not be negative");
+        }
+    }
+
+    public void setAdmissionState(String admissionState) {
+        if (admissionState != null && !admissionState.isEmpty()) this.admissionState = admissionState;
+        else System.out.println("admission State can not be empty");
     }
 
     //getters
@@ -49,13 +60,28 @@ public class InPatient extends Patient {
 
     @Override
     public void displayInfo() {
-        super.displayInfo();
+        super.displayInfo(); //Person → Patient → InPatient
         System.out.println("[Patient details]");
         System.out.println("Admission date: "+getAdmissionDate());
         System.out.println("room Number: "+getRoomNumber());
         System.out.println("daily Charges: "+getDailyCharges());
-        System.out.println("daysA dmitted: "getDaysAdmitted());
+        System.out.println("daysA dmitted: "+getDaysAdmitted());
     }
 
+    public void admit(){
+        setAdmissionState("Admitted");
+        setActiveStatus(true);
+    }
 
+    public void discharge(){
+        setAdmissionState("Discharged");
+        setActiveStatus(false);
+    }
+
+    public double totalRoomCost(){
+        if (getDaysAdmitted() == null) {
+            System.out.println("incomplete data. cost can not be calculated yet.\nset days admitted and daily cost.");
+            return 0;
+        } else return (double) getDaysAdmitted()*getDailyCharges();
+    }
 }
