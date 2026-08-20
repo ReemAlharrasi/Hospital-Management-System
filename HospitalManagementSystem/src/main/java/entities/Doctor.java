@@ -31,6 +31,8 @@ public class Doctor extends Person{
         setOnCall(isOnCall);
     }
 
+
+
     //getters
     public String getSpecialization() {return specialization;}
     public Integer getExperienceYears() {return experienceYears;}

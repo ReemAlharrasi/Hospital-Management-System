@@ -61,7 +61,7 @@ public class InPatient extends Patient { //Person → Patient → InPatient
     @Override
     public void displayInfo() {
         super.displayInfo(); //Person → Patient → InPatient
-        System.out.println("[Patient details]");
+        System.out.println("[InPatient details]");
         System.out.println("Admission date: "+getAdmissionDate());
         System.out.println("room Number: "+getRoomNumber());
         System.out.println("daily Charges: "+getDailyCharges());
