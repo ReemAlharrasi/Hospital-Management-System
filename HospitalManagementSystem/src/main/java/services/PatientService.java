@@ -2,6 +2,7 @@ package services;
 
 import entities.Patient;
 import entities.InPatient;
+import utils.HelperUtils;
 
 public class PatientService {
     private Patient[] patients;
@@ -20,7 +21,7 @@ public class PatientService {
 
 * */
     public Patient addPatient(String firstName, String lastName, int age){
-        String id = "PA"+count;
+        String id = HelperUtils.generateId("PA");
         Patient p = new Patient(id,firstName,lastName, "1950-01-01",
                 "other", "+968 0000 0000","unknown",
                 "unknown","unknown", age, true,
@@ -42,7 +43,7 @@ public class PatientService {
         return p;
     }
     public Patient addPatient(Patient p){
-        p.setId("PA"+count);
+        p.setId(HelperUtils.generateId("PA"));
         if (count>=patients.length){
             System.out.println("List is full");
         }else{
