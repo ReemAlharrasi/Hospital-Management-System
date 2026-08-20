@@ -101,6 +101,19 @@ public class Appointment {
         return getAppointmentDate().compareTo(date) < 0;
     }
 
+    public void addNotes(String notes){
+        if (notes == null || notes.isEmpty()){
+            return;
+        }
+        if (getReason() == null || getReason().isEmpty()){
+            setReason(notes);
+        } else{
+            setReason(getReason()+" | "+ notes);
+        }
+    }
 
+    public void addNotes(String notes,String author){
+        addNotes(notes+"[by "+ author +"]");
+    }
 }
 
