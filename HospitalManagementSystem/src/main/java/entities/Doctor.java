@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 public class Doctor extends Person  implements Displayable {
     private String specialization;
@@ -47,15 +48,15 @@ public class Doctor extends Person  implements Displayable {
 
     //setters
     public void setSpecialization(String specialization) {
-        if (specialization != null && !specialization.isEmpty()) this.specialization = specialization;
+        if (HelperUtils.isEmpty(specialization)) this.specialization = specialization;
         else System.out.println("specialization can not be empty");
     }
     public void setExperienceYears(Integer experienceYears) {
-        if (experienceYears>=0)this.experienceYears = experienceYears;
+        if (HelperUtils.isPositive(experienceYears)) this.experienceYears = experienceYears;
         else System.out.println("Invalid: experience years can not be negative.");
     }
     public void setConsultationFee(Double consultationFee) {
-        if (consultationFee>=0)this.consultationFee = consultationFee;
+        if (HelperUtils.isPositive(consultationFee))this.consultationFee = consultationFee;
         else System.out.println("Invalid: Fee can not be negative.");
     }
     public void setOnCall(boolean onCall) {isOnCall = onCall;}
@@ -73,11 +74,10 @@ public class Doctor extends Person  implements Displayable {
 
     public void addSlot(String slot){
         //ensure input is not empty
-        if (slot.isEmpty()){
+        if (HelperUtils.isEmpty(slot)){
             System.out.println("Invalid: slot can not be empty.");
             return;
         }
-
         //check if list is full
         if (slotCount >= timeSlots.length) {
             System.out.println("Invalid: slot time list is full.");
@@ -112,7 +112,7 @@ public class Doctor extends Person  implements Displayable {
    }
 
     public void assignPatient(String patient){
-        if (patient.isEmpty()){
+        if (HelperUtils.isEmpty(patient)){
             System.out.println("Invalid:  patient ID can not be empty.");
             return;
         }
@@ -130,7 +130,7 @@ public class Doctor extends Person  implements Displayable {
     }
 
     public void raiseFee(double money){
-        if (money<0){
+        if (!HelperUtils.isPositive(money)){
             System.out.println("Invalid:  money can not be negative.");
             return;
         }

@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 public class InPatient extends Patient implements Displayable { //Person → Patient → InPatient
     private String admissionDate, roomNumber,admissionState;
@@ -23,17 +24,17 @@ public class InPatient extends Patient implements Displayable { //Person → Pat
 
     //setters
     public void setAdmissionDate(String admissionDate) {
-        if (admissionDate != null && !admissionDate.isEmpty()) this.admissionDate = admissionDate;
+        if (HelperUtils.isEmpty(admissionDate)) this.admissionDate = admissionDate;
         else System.out.println("admission Date can not be empty");
     }
 
     public void setRoomNumber(String roomNumber) {
-        if (roomNumber != null && !roomNumber.isEmpty()) this.roomNumber = roomNumber;
+        if (HelperUtils.isEmpty(roomNumber)) this.roomNumber = roomNumber;
         else System.out.println("room Number can not be empty");
     }
 
     public void setDailyCharges(double dailyCharges) {
-        if (dailyCharges>=0) this.dailyCharges = dailyCharges;
+        if (HelperUtils.isPositive(dailyCharges)) this.dailyCharges = dailyCharges;
         else {
             this.dailyCharges =0;
             System.out.println("dailyCharges can not be negative");
@@ -42,7 +43,7 @@ public class InPatient extends Patient implements Displayable { //Person → Pat
     }
 
     public void setDaysAdmitted(Integer daysAdmitted) {
-        if (daysAdmitted>=0) this.daysAdmitted = daysAdmitted;
+        if (HelperUtils.isPositive(daysAdmitted)) this.daysAdmitted = daysAdmitted;
         else {
             this.daysAdmitted =0;
             System.out.println("days Admitted can not be negative");
@@ -50,7 +51,7 @@ public class InPatient extends Patient implements Displayable { //Person → Pat
     }
 
     public void setAdmissionState(String admissionState) {
-        if (admissionState != null && !admissionState.isEmpty()) this.admissionState = admissionState;
+        if (HelperUtils.isEmpty(admissionState)) this.admissionState = admissionState;
         else System.out.println("admission State can not be empty");
     }
 

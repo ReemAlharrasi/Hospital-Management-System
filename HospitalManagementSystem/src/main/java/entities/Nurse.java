@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 public class Nurse extends Person implements Displayable {
     private String departmentId;
@@ -31,22 +32,19 @@ public class Nurse extends Person implements Displayable {
 
     //setters
     public void setDepartmentId(String departmentId) {
-        if (departmentId != null && !departmentId.isEmpty()) this.departmentId = departmentId;
+        if (HelperUtils.isEmpty(departmentId)) this.departmentId = departmentId;
         else System.out.println("Address can not be empty");
     }
+
     public void setShift(String shift) {
-        if (shift != null && !shift.isEmpty()) {
-            for (String allowed : ALLOWED_SHIFT) {
-                if (allowed.equalsIgnoreCase(shift.trim())) {
-                    this.shift = shift;
-                    return;
-                }
-            }
+        if (!HelperUtils.isOneOf(shift,ALLOWED_SHIFT)) {
             System.out.println("shift entered is   m  not allowed");
-        } else System.out.println("shift can not be empty");
+            return;
+        }
+        this.shift=shift;
     }
     public void setYearsOfService(Integer yearsOfService) {
-        if (yearsOfService>=0)this.yearsOfService = yearsOfService;
+        if (HelperUtils.isPositive(yearsOfService))this.yearsOfService = yearsOfService;
         else System.out.println("Invalid: years of service can not be negative.");
     }
 
@@ -69,7 +67,7 @@ public class Nurse extends Person implements Displayable {
     }
 
     public void assignPatient(String patient){
-        if (patient.isEmpty()){
+        if (HelperUtils.isEmpty(patient)){
             System.out.println("Invalid:  patient ID can not be empty.");
             return;
         }

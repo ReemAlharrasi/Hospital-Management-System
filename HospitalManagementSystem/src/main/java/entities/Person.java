@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 import java.util.Objects;
 
@@ -55,61 +56,60 @@ public class Person implements Displayable {
 
     //setters
     public void setId(String id) {
-        if(id != null && !id.isEmpty()) this.id = id;
+        if(HelperUtils.isEmpty(id)) this.id = id;
         else System.out.println("Id can not be empty");
     }
     public void setFirstName(String firstName) {
-        if (firstName != null && !firstName.isEmpty()) this.firstName = firstName;
+        if (HelperUtils.isEmpty(firstName)) this.firstName = firstName;
         else System.out.println("First name can not be empty");
     }
     public void setLastName(String lastName) {
-        if (lastName != null && !lastName.isEmpty()) this.lastName = lastName;
+        if (HelperUtils.isEmpty(lastName)) this.lastName = lastName;
         else System.out.println("Last name can not be empty");
     }
     public void setDateOfBirth(String dateOfBirth) {
-        if (dateOfBirth != null && !dateOfBirth.isEmpty()) this.dateOfBirth = dateOfBirth;
+        if (HelperUtils.isEmpty(dateOfBirth)) this.dateOfBirth = dateOfBirth;
         else System.out.println("Date of birth can not be empty");
     }
     public void setGender(String gender) {
-        if (gender != null && !gender.isEmpty()) this.gender = gender;
+        if (HelperUtils.isEmpty(gender)) this.gender = gender;
         else System.out.println("Gender can not be empty");
     }
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber != null && !phoneNumber.isEmpty()) this.phoneNumber = phoneNumber;
+        if (HelperUtils.isEmpty(phoneNumber)) this.phoneNumber = phoneNumber;
         else System.out.println("Phone Number can not be empty");
     }
     public void setEmail(String email) {
-        if (email != null && !email.isEmpty()) this.email = email;
+        if (HelperUtils.isEmpty(email)) this.email = email;
         else System.out.println("Phone Number can not be empty");
     }
     public void setAddress(String address) {
-        if (address != null && !address.isEmpty()) this.address = address;
+        if (HelperUtils.isEmpty(address)) this.address = address;
         else System.out.println("Address can not be empty");
     }
     public void setNationalId(String nationalId) {
-        if (nationalId != null && !nationalId.isEmpty()) this.nationalId = nationalId;
+        if (HelperUtils.isEmpty(nationalId)) this.nationalId = nationalId;
         else System.out.println("National ID can not be empty");
     }
     public void setAge(int age) {
-        if (age>=0 && age<=120) this.age = age;
-        else System.out.println("Invalid: age out of          b n" +
-                "3range.");
+        if (HelperUtils.inRange(age,0,120)) this.age = age;
+        else System.out.println("Invalid: age out of range.");
     }
     public void setActiveStatus(boolean activeStatus) {this.activeStatus = activeStatus;}
 
     //methods
     public void displayInfo() {
         System.out.println("----- Person -----");
-        System.out.println("Id: " + id);
+        System.out.println("Id: " + getId());
         System.out.println("Name: " + getFullName());
-        System.out.println("Date of birth: " + dateOfBirth);
-        System.out.println("Gender: " + gender);
-        System.out.println("Phone: " + phoneNumber);
-        System.out.println("Email: " + email);
-        System.out.println("Address: " + address);
-        System.out.println("National id: " + nationalId);
-        System.out.println("Age: " + age);
-        System.out.println("Active: " + activeStatus);
+        System.out.println("Date of birth: " + getDateOfBirth());
+        System.out.println("Gender: " + getGender());
+        System.out.println("Phone: " + getPhoneNumber());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Address: " + getAddress());
+        System.out.println("National id: " + getNationalId());
+        System.out.println("Age: " + getAge());
+        System.out.println("Active: " + isActiveStatus());
     }
 
     // print only id + full name
@@ -118,7 +118,7 @@ public class Person implements Displayable {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        return getFirstName() + " " + getLastName();
     }
 
     @Override

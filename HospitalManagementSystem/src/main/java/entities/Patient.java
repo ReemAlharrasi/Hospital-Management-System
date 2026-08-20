@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 public class Patient extends Person implements Displayable {
     private String bloodGroup,emergencyContact,registrationDate;
@@ -47,19 +48,19 @@ public class Patient extends Person implements Displayable {
 
     //setters
     public void setBloodGroup(String bloodGroup) {
-        if (bloodGroup != null && !bloodGroup.isEmpty()) this.bloodGroup = bloodGroup;
+        if (HelperUtils.isEmpty(bloodGroup)) this.bloodGroup = bloodGroup;
         else System.out.println("Blood Group can not be empty");
     }
     public void setEmergencyContact(String emergencyContact) {
-        if (emergencyContact != null && !emergencyContact.isEmpty()) this.emergencyContact = emergencyContact;
+        if (HelperUtils.isEmpty(emergencyContact)) this.emergencyContact = emergencyContact;
         else System.out.println("emergency Contact can not be empty");
     }
     public void setRegistrationDate(String registrationDate) {
-        if (registrationDate != null && !registrationDate.isEmpty()) this.registrationDate = registrationDate;
+        if (HelperUtils.isEmpty(registrationDate)) this.registrationDate = registrationDate;
         else System.out.println("registration Date can not be empty");
     }
     public void setOutstandingBalance(double outstandingBalance) {
-         if (outstandingBalance>=0) this.outstandingBalance = outstandingBalance;
+         if (HelperUtils.isPositive(outstandingBalance)) this.outstandingBalance = outstandingBalance;
          else System.out.println("Invalid: balance can not be negative.");
     }
     public void setInsured(boolean insured) {isInsured = insured;}
@@ -78,7 +79,7 @@ public class Patient extends Person implements Displayable {
 
     public void addAllergy(String allergy){
         //ensure input is not empty
-        if (allergy.isEmpty()){
+        if (HelperUtils.isEmpty(allergy)){
             System.out.println("Invalid: Allergy cannot be empty.");
             return;
         }
@@ -116,7 +117,7 @@ public class Patient extends Person implements Displayable {
 
     public void addRecordId(String record){
         //ensure input is not empty
-        if (record.isEmpty()){
+        if (HelperUtils.isEmpty(record)){
             System.out.println("Invalid: record cannot be empty.");
             return;
         }
@@ -133,7 +134,7 @@ public class Patient extends Person implements Displayable {
     public int getRecordCount() {return recordCount;}
 
     public void addToBalance(double money){
-        if (money<0) {
+        if (!HelperUtils.isPositive(money)) {
             System.out.println("Invalid: amount to add to balance can not be negative.");
             return;
         }

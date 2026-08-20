@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 public class Appointment implements Displayable {
     private String appointmentId, patientId, doctorId;
@@ -25,38 +26,34 @@ public class Appointment implements Displayable {
 
     //setters
     public void setAppointmentId(String appointmentId) {
-        if (appointmentId != null && !appointmentId.isEmpty()) this.appointmentId = appointmentId;
+        if (HelperUtils.isEmpty(appointmentId)) this.appointmentId = appointmentId;
         else System.out.println("appointment Id can not be empty");
     }
     public void setPatientId(String patientId) {
-        if (patientId != null && !patientId.isEmpty()) this.patientId = patientId;
+        if (HelperUtils.isEmpty(patientId)) this.patientId = patientId;
         else System.out.println("patient Id can not be empty");
     }
     public void setDoctorId(String doctorId) {
-        if (doctorId != null && !doctorId.isEmpty()) this.doctorId = doctorId;
+        if (HelperUtils.isEmpty(doctorId)) this.doctorId = doctorId;
         else System.out.println("doctor Id can not be empty");
     }
     public void setAppointmentDate(String appointmentDate) {
-        if (appointmentDate != null && !appointmentDate.isEmpty()) this.appointmentDate = appointmentDate;
+        if (HelperUtils.isEmpty(appointmentDate)) this.appointmentDate = appointmentDate;
         else System.out.println("appointment Date can not be empty");
     }
     public void setAppointmentTime(String appointmentTime) {
-        if (appointmentTime != null && !appointmentTime.isEmpty()) this.appointmentTime = appointmentTime;
+        if (HelperUtils.isEmpty(appointmentTime)) this.appointmentTime = appointmentTime;
         else System.out.println("appointment Time can not be empty");
     }
     public void setStatus(String status) {
-        if (status != null && !status.isEmpty()) {
-            for (String allowed : ALLOWED_STATUS) {
-                if (allowed.equalsIgnoreCase(status.trim())) {
-                    this.status = status;
-                    return;
-                }
-            }
+        if (!HelperUtils.isOneOf(status,ALLOWED_STATUS)) {
             System.out.println("status entered is not allowed");
-        } else System.out.println("status  can not be empty");
+            return;
+        }
+        this.status = status;
     }
     public void setReason(String reason) {
-        if (reason != null && !reason.isEmpty()) this.reason = reason;
+        if (HelperUtils.isEmpty(reason)) this.reason = reason;
         else System.out.println("reason can not be empty");
     }
     public void setFollowUp(boolean followUp) {isFollowUp = followUp;}
@@ -109,10 +106,10 @@ public class Appointment implements Displayable {
     }
 
     public void addNotes(String notes){
-        if (notes == null || notes.isEmpty()){
+        if (HelperUtils.isEmpty(notes)){
             return;
         }
-        if (getReason() == null || getReason().isEmpty()){
+        if (HelperUtils.isEmpty(getReason())){
             setReason(notes);
         } else{
             setReason(getReason()+" | "+ notes);

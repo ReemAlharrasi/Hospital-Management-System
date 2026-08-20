@@ -1,6 +1,7 @@
 package entities;
 
 import interfaces.Displayable;
+import utils.HelperUtils;
 
 public class Surgeon extends Doctor implements Displayable {
     //attributes
@@ -20,7 +21,7 @@ public class Surgeon extends Doctor implements Displayable {
 
     //setters
     public void setSurgeriesPerformed(Integer surgeriesPerformed) {
-        if (surgeriesPerformed>=0)this.surgeriesPerformed = surgeriesPerformed;
+        if (HelperUtils.isPositive(surgeriesPerformed))this.surgeriesPerformed = surgeriesPerformed;
         else System.out.println("Number of surgeriesPerformed cannot be negative");
     }
 
@@ -50,7 +51,7 @@ public class Surgeon extends Doctor implements Displayable {
 
     public void scheduleSurgery(String upcoming){
         //ensure input is not empty
-        if (upcoming.isEmpty()){
+        if (HelperUtils.isEmpty(upcoming)){
             System.out.println("Invalid: slot can not be empty.");
             return;
         }
