@@ -51,6 +51,10 @@ public class InPatient extends Patient {
     public void displayInfo() {
         super.displayInfo();
         System.out.println("[Patient details]");
+        System.out.println("Admission date: "+getAdmissionDate());
+        System.out.println("room Number: "+getRoomNumber());
+        System.out.println("daily Charges: "+getDailyCharges());
+        System.out.println("daysA dmitted: "getDaysAdmitted());
     }
 
 
